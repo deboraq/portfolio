@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Débora Quinteros
 
-## Getting Started
+Portfolio personal en Next.js con proyectos de [github.com/deboraq](https://github.com/deboraq).
 
-First, run the development server:
+## Arranque
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Comando        | Uso                |
+| -------------- | ------------------ |
+| `npm run dev`  | Desarrollo         |
+| `npm run build`| Build de producción|
+| `npm run start`| Servidor post-build|
+| `npm run lint` | ESLint             |
 
-## Learn More
+## Contenido
 
-To learn more about Next.js, take a look at the following resources:
+Editá bio, proyectos, email y links en [`src/data/site.ts`](src/data/site.ts). No hace falta tocar el layout para cambiar textos.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy en Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Subí el repo a GitHub.
+2. En [vercel.com](https://vercel.com) → **Add New Project** → conectá el repositorio.
+3. Framework: **Next.js** (detectado solo). Deploy.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Cada push a `main` puede publicar una nueva versión según tu configuración en Vercel.
