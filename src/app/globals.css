@@ -854,14 +854,27 @@ code {
 
 .project-card__visual {
   position: relative;
-  height: 180px;
+  width: 100%;
+  aspect-ratio: 2 / 1;
   display: grid;
   place-items: center;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
   background:
     radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 55%),
     linear-gradient(145deg, #151522, #0c0c14);
   transition: transform 0.15s ease-out;
-  transform-style: preserve-3d;
+}
+
+.project-card__visual--cover {
+  background:
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--accent) 55%, transparent), transparent 55%),
+    radial-gradient(circle at 90% 100%, rgba(236, 72, 153, 0.35), transparent 50%),
+    linear-gradient(145deg, #1a1430, #0c0c14);
 }
 
 .project-card__glow {
@@ -870,6 +883,7 @@ code {
   background: var(--accent);
   filter: blur(50px);
   opacity: 0.35;
+  pointer-events: none;
 }
 
 .project-card__mark {
@@ -882,11 +896,303 @@ code {
   color: rgba(255, 255, 255, 0.85);
 }
 
+.project-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.project-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(10, 10, 16, 0.45));
+  pointer-events: none;
+}
+
+.project-cover img {
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card__visual:hover .project-cover img,
+.project-card__visual:focus-visible .project-cover img {
+  transform: scale(1.04);
+}
+
+.project-card__hint {
+  position: absolute;
+  left: 0.9rem;
+  top: 0.9rem;
+  z-index: 3;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(10, 10, 16, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.project-card__visual:hover .project-card__hint,
+.project-card__visual:focus-visible .project-card__hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .project-card__hint {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* —— Project modal —— */
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+  background: rgba(5, 5, 10, 0.85);
+  backdrop-filter: blur(8px);
+  animation: modal-fade 0.25s ease;
+}
+
+.project-modal__panel {
+  position: relative;
+  width: min(960px, 100%);
+  margin: auto;
+  padding: 1.75rem;
+  border-radius: 1.4rem;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(520px 220px at 0% 0%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
+    #11111a;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+  animation: modal-pop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.project-modal__close:hover {
+  background: rgba(168, 85, 247, 0.4);
+}
+
+.project-modal__header h3 {
+  margin-top: 0.25rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  font-weight: 700;
+}
+
+.project-modal__gallery {
+  margin-top: 1.25rem;
+}
+
+.project-modal__main {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0c0c14;
+}
+
+.project-modal__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: modal-fade 0.35s ease;
+}
+
+.project-modal__nav {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 10, 16, 0.7);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.project-modal__nav:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+.project-modal__nav--prev {
+  left: 0.75rem;
+}
+
+.project-modal__nav--next {
+  right: 0.75rem;
+}
+
+.project-modal__thumbs {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  overflow-x: auto;
+}
+
+.project-modal__thumbs button {
+  flex: 0 0 120px;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: none;
+  opacity: 0.55;
+  cursor: pointer;
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.project-modal__thumbs button:hover {
+  opacity: 0.85;
+}
+
+.project-modal__thumbs button.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+.project-modal__thumbs img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-modal__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.project-modal__sections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem 1.75rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-modal__sections h4,
+.project-modal__content h4 {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-modal__desc {
+  color: var(--fg-muted);
+  line-height: 1.65;
+}
+
+.project-modal__highlights {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.project-modal__highlights li {
+  position: relative;
+  padding-left: 1.4rem;
+  line-height: 1.5;
+}
+
+.project-modal__highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), #ec4899);
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+}
+
+@media (max-width: 760px) {
+  .project-modal__panel {
+    padding: 1.25rem;
+  }
+
+  .project-modal__content {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .project-modal__thumbs button {
+    flex-basis: 90px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-cover,
+  .project-modal,
+  .project-modal__panel,
+  .project-modal__image {
+    animation: none;
+    transition: none;
+  }
+}
+
 .project-card__badge {
   position: absolute;
   top: 0.9rem;
   right: 0.9rem;
-  z-index: 1;
+  z-index: 3;
   padding: 0.3rem 0.65rem;
   border-radius: 999px;
   background: rgba(0, 0, 0, 0.45);

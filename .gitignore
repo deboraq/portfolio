@@ -42,3 +42,6 @@ next-env.d.ts
 
 # CV personal (solo local)
 /cv/
+
+# Capturas originales (solo local)
+/Fotos proyectos/

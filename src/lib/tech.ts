@@ -31,6 +31,12 @@ const TECH: Record<string, { slug: string; color: string }> = {
   "Testing Manual": { slug: "selenium", color: "43B02A" },
   "Análisis de requerimientos": { slug: "notion", color: "E5E7EB" },
   Postman: { slug: "postman", color: "FF6C37" },
+  n8n: { slug: "n8n", color: "EA4B71" },
+  "Cloud Run": { slug: "googlecloud", color: "4285F4" },
+  PWA: { slug: "pwa", color: "5A0FC8" },
+  "Google Drive": { slug: "googledrive", color: "4285F4" },
+  Excel: { slug: "googlesheets", color: "34A853" },
+  PostgreSQL: { slug: "postgresql", color: "4169E1" },
 };
 
 export function techIconUrl(name: string, mono = false) {
