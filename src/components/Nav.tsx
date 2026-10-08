@@ -11,11 +11,7 @@ const links = [
   { href: "#contacto", label: "Contacto" },
 ];
 
-type Props = {
-  onHire: () => void;
-};
-
-export function Nav({ onHire }: Props) {
+export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -42,16 +38,6 @@ export function Nav({ onHire }: Props) {
               {link.label}
             </a>
           ))}
-          <button
-            type="button"
-            className="nav__hire"
-            onClick={() => {
-              setOpen(false);
-              onHire();
-            }}
-          >
-            Contactame
-          </button>
         </nav>
       </div>
     </header>

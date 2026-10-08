@@ -440,7 +440,7 @@ code {
 }
 
 .pc-glare {
-  z-index: 4;
+  z-index: 3;
   mix-blend-mode: overlay;
   pointer-events: none;
   background-image: radial-gradient(
@@ -451,7 +451,7 @@ code {
 }
 
 .pc-avatar-content {
-  z-index: 2;
+  z-index: 4;
   overflow: hidden;
   pointer-events: none;
 }
@@ -472,8 +472,7 @@ code {
   position: absolute;
   inset: 0;
   z-index: 1;
-  backdrop-filter: blur(30px);
-  mask: linear-gradient(to bottom, transparent 0%, transparent 55%, #000 90%, #000 100%);
+  background: linear-gradient(to bottom, #0a0a10cc 0%, transparent 28%, transparent 75%, #0a0a1066 100%);
 }
 
 .pc-content {

@@ -6,10 +6,9 @@ import { Typewriter } from "./Typewriter";
 
 type Props = {
   onContact: () => void;
-  onChat: () => void;
 };
 
-export function Hero({ onContact, onChat }: Props) {
+export function Hero({ onContact }: Props) {
   return (
     <section className="hero" id="inicio">
       <div className="hero__copy">
@@ -33,10 +32,6 @@ export function Hero({ onContact, onChat }: Props) {
           </a>
           <a href={`mailto:${site.email}`}>Email</a>
         </div>
-
-        <button type="button" className="btn btn--primary" onClick={onChat}>
-          Empezar una conversación
-        </button>
       </div>
 
       <div className="hero__card">

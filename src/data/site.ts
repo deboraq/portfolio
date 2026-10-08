@@ -25,7 +25,7 @@ export const site = {
   phone: "+54 351 541-6836",
   phoneHref: "tel:+543515416836",
   location: "Argentina",
-  avatar: "https://avatars.githubusercontent.com/u/99772248?v=4",
+  avatar: "/foto.jpg",
   about: [
     "Actualmente me desempeño como Analista Funcional y QA en BACAR SA: análisis de requerimientos, diseño de soluciones internas y validación de implementaciones en sistemas ERP y de gestión.",
     "Además soy desarrolladora fullstack: construyo herramientas internas (chatbots, paneles, e-commerce y apps web) con React, Next.js, Python, Firebase y Supabase. Combino análisis, QA e implementación para que las soluciones se usen de verdad.",
@@ -47,9 +47,9 @@ export const site = {
   certifications: [
     "QA Automation — Santex",
     "CSQA — XAcademy",
-    "Python",
+    "Python — Cisco",
     "MySQL — TodoCode",
-    "AWS Well-Architected (práctico)",
+    "AWS — Coderhouse"
   ],
   projects: [
     {
@@ -59,7 +59,7 @@ export const site = {
         "Plataforma de atención vía web y WhatsApp, con panel de gestión, base de conocimiento con IA, comunicados masivos y métricas en tiempo real.",
       stack: ["Python", "Flask", "Firebase", "Gemini AI", "WhatsApp"],
       repo: "https://github.com/deboraq/ChatBotRRHH",
-      demo: "https://debo-chat.web.app",
+      demo: null,
       featured: true,
       accent: "#c084fc",
     },
@@ -70,7 +70,7 @@ export const site = {
         "E-commerce de ropa y equipamiento outdoor: catálogo en Firestore, panel de administración y checkout por WhatsApp.",
       stack: ["Next.js", "React", "TypeScript", "Firebase", "Tailwind"],
       repo: "https://github.com/deboraq/tienda-trekk",
-      demo: "https://tienda-mates-1.vercel.app",
+      demo: null,
       featured: true,
       accent: "#e879f9",
     },
@@ -81,7 +81,7 @@ export const site = {
         "App web para menú del día, pedidos y administración. Persistencia con Prisma y Supabase, desplegada en Vercel.",
       stack: ["TypeScript", "Prisma", "Supabase", "Next.js"],
       repo: "https://github.com/deboraq/menu-diario",
-      demo: "https://menu-diario-gilt.vercel.app",
+      demo: null,
       featured: false,
       accent: "#a78bfa",
     },

@@ -74,7 +74,7 @@ export function Contact() {
     <section className="section section--contact" id="contacto">
       <div className="section__intro section__intro--center">
         <h2 className="section__title">
-          Ponte en <span className="gradient-text">contacto</span>
+          <span className="gradient-text">Contacto</span>
         </h2>
       </div>
 
