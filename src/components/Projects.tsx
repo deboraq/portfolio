@@ -7,11 +7,15 @@ import { site, type Project } from "@/data/site";
 import { TechIcon } from "./TechIcon";
 
 function ProjectLinks({ project }: { project: Project }) {
+  if (!project.repo && !project.demo) return null;
+
   return (
     <div className="project-card__links">
-      <a href={project.repo} target="_blank" rel="noopener noreferrer" className="btn-code">
-        Código
-      </a>
+      {project.repo ? (
+        <a href={project.repo} target="_blank" rel="noopener noreferrer" className="btn-code">
+          Código
+        </a>
+      ) : null}
       {project.demo ? (
         <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-demo">
           Ver demo

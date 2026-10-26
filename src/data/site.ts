@@ -138,7 +138,7 @@ export const site = {
         },
       ],
       stack: ["Next.js", "React", "TypeScript", "Firebase", "Tailwind", "Vercel"],
-      repo: "https://github.com/deboraq/tienda-trekk",
+      repo: null,
       demo: "https://sangrenomadeadventure.vercel.app",
       cover: "/proyectos/portadas/sangre-nomade.jpg",
       images: [],
